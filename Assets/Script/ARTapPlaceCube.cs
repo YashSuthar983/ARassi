@@ -129,11 +129,11 @@ public class ARTapPlaceCube : MonoBehaviour
             Canvas c = canvas.AddComponent<Canvas>();
             c.renderMode = RenderMode.ScreenSpaceOverlay;
 
-            // Optional: Add CanvasScaler to ensure proper scaling
+            
             CanvasScaler scaler = canvas.AddComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
 
-            // Allow raycasting for UI interaction
+            
             canvas.AddComponent<GraphicRaycaster>();
         }
 
@@ -141,14 +141,14 @@ public class ARTapPlaceCube : MonoBehaviour
         GameObject popup = new GameObject("PopupMessage");
         popup.transform.SetParent(canvas.transform);
 
-        // Ensure RectTransform settings for the popup
+       
         RectTransform rectTransform = popup.AddComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(600, 100);
-        rectTransform.anchoredPosition = new Vector2(0, 200); // Position it at the top of the screen
+        rectTransform.anchoredPosition = new Vector2(0, 200);
 
         // Add a background color to the popup
         Image bg = popup.AddComponent<Image>();
-        bg.color = new Color(0, 0, 0, 0.8f); // Semi-transparent black background
+        bg.color = new Color(0, 0, 0, 0.8f);
 
         // Add text component for the popup message
         GameObject textObj = new GameObject("PopupText");
@@ -156,17 +156,17 @@ public class ARTapPlaceCube : MonoBehaviour
 
         Text popupText = textObj.AddComponent<Text>();
         popupText.text = message;
-        popupText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");  // Use Lagacy font
+        popupText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         popupText.color = Color.white;
         popupText.alignment = TextAnchor.MiddleCenter;
 
         // Ensure the RectTransform of the text is sized and positioned properly
         RectTransform textRect = textObj.GetComponent<RectTransform>();
-        textRect.sizeDelta = new Vector2(600, 100);  // Same size as the popup background
-        textRect.anchoredPosition = Vector2.zero;    // Center text in the popup
+        textRect.sizeDelta = new Vector2(600, 100);
+        textRect.anchoredPosition = Vector2.zero;
 
-        // Destroy the popup after 2 seconds
-        GameObject.Destroy(popup, 2f);  // Popup disappears after 2 seconds
+        // Destroy the popup after 1.5 seconds
+        GameObject.Destroy(popup, 1.5f);
     }
 
 
